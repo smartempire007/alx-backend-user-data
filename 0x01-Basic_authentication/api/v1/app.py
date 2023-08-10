@@ -92,7 +92,9 @@ def forbidden(error) -> str:
 
 # Run the Flask application if this script is executed directly
 if __name__ == "__main__":
-    # Read API_HOST and API_PORT from environment variables or use default values
+    '''Read API_HOST and API_PORT from environment
+    variables or use default values
+    '''
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
 
