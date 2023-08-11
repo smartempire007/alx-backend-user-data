@@ -6,6 +6,7 @@ Module for authentication
 
 from typing import List, TypeVar
 from flask import request
+import os
 
 
 class Auth:
@@ -66,3 +67,14 @@ class Auth:
         """
 
         return None
+
+    def session_cookie(self, request=None):
+        """_summary_
+
+        Args:
+            request (_type_, optional): _description_. Defaults to None.
+        """
+        if request is None:
+            return None
+        session_name = os.getenv('SESSION_NAME')
+        return request.cookies.get(session_name)
