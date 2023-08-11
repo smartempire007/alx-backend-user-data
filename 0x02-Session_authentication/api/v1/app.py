@@ -17,7 +17,8 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = None
 
 
-# Check the value of AUTH_TYPE and initialize auth variable accordingly
+# Check the value of AUTH_TYPE and initialize auth variable
+# accordingly
 if getenv("AUTH_TYPE") == 'auth':
     from api.v1.auth.auth import Auth
     auth = Auth()
@@ -51,8 +52,8 @@ def request_filter() -> None:
     # Check if authentication is required for the requested path
     if auth and auth.require_auth(request.path, excluded_paths):
         # Check if authorization header is present
-        if auth.authorization_header(request) is None and auth.session_cookie(
-                request) is None:
+        if auth.authorization_header(
+                request) is None and auth.session_cookie(request) is None:
             abort(401)
         # Check if current user is authorized
         if auth.current_user(request) is None:

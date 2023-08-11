@@ -17,10 +17,10 @@ class SessionAuth(Auth):
     user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> str:
-        """
-        Create Session ID
+        """Create Session ID
 
-        Generate a unique session ID for the specified user ID and store
+        Generate a unique session ID for the specified user
+        ID and store
         the mapping of session ID to user ID.
 
         Args:
@@ -66,7 +66,8 @@ class SessionAuth(Auth):
             request: The request object containing the cookie.
 
         Returns:
-            User: The User instance associated with the session ID in the cookie.
+            User: The User instance associated with the session ID
+            in the cookie.
         """
 
         session_id = self.session_cookie(request)

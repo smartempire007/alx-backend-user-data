@@ -9,22 +9,27 @@ from datetime import datetime, timedelta
 
 
 class SessionExpAuth(SessionAuth):
-    """ 
-    The `SessionExpAuth` class extends the functionality of `SessionAuth` class by adding session expiration feature.
-    It manages user sessions and provides methods for session creation, retrieval, and expiration.
+    """The `SessionExpAuth` class extends the functionality of `SessionAuth`
+    class by adding session expiration feature.
+    It manages user sessions and provides methods for session creation,
+    retrieval, and expiration.
 
     Attributes:
         session_duration (int): The duration of the session in seconds.
 
     Methods:
-        __init__(): Initializes the `SessionExpAuth` object by setting the session duration based on the environment variable 'SESSION_DURATION'.
-        create_session(user_id: str = None) -> str: Creates a new session ID for a given user ID and stores it with the associated user information.
-        user_id_for_session_id(session_id: str = None) -> str: Retrieves the user ID associated with a session ID if the session is valid and not expired.
+        __init__(): Initializes the `SessionExpAuth` object by setting the
+        session duration based on the environment variable 'SESSION_DURATION'.
+        create_session(user_id: str = None) -> str: Creates a new session ID
+        for a given user ID and stores it with the associated user information.
+        user_id_for_session_id(session_id: str = None) -> str: Retrieves the
+        user ID associated with a session ID if the session is valid and not
+        expired.
     """
 
     def __init__(self):
-        """ 
-        Initializes the `SessionExpAuth` object by setting the session duration based on the environment variable 'SESSION_DURATION'.
+        """Initializes the `SessionExpAuth` object by setting the session
+        duration based on the environment variable 'SESSION_DURATION'.
 
         Returns:
             None
@@ -35,8 +40,8 @@ class SessionExpAuth(SessionAuth):
             self.session_duration = 0
 
     def create_session(self, user_id: str = None) -> str:
-        """ 
-        Creates a new session ID for a given user ID and stores it with the associated user information.
+        """Creates a new session ID for a given user ID and stores
+        it with the associated user information.
 
         Args:
             user_id (str): The ID of the user.
@@ -59,14 +64,15 @@ class SessionExpAuth(SessionAuth):
         return session_id
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
-        """ 
-        Retrieves the user ID associated with a session ID if the session is valid and not expired.
+        """Retrieves the user ID associated with a session ID if the
+        session is valid and not expired.
 
         Args:
             session_id (str): The session ID to retrieve the user ID for.
 
         Returns:
-            str: The user ID associated with the session ID if it is valid and not expired. Otherwise, returns None.
+            str: The user ID associated with the session ID if it is valid
+            and not expired. Otherwise, returns None.
         """
         if session_id is None or isinstance(session_id, str) is False:
             return None
