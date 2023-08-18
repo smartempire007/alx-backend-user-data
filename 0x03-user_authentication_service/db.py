@@ -63,7 +63,8 @@ class DB:
             # Query the user table based on the keyword arguments provided
             record = self._session.query(User).filter_by(**kwargs).first()
         except TypeError:
-            # If any error occurs during the query, raise an InvalidRequestError
+            # If any error occurs during the query, raise an
+            # InvalidRequestError
             raise InvalidRequestError
 
         if record is None:
